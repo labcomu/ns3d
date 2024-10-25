@@ -1,0 +1,22 @@
+services:
+
+  ns3:
+    image: ns3
+    container_name: ns3
+    hostname: ns3
+    restart: unless-stopped
+    tty: true
+    build:
+      dockerfile: Dockerfile.yml
+    volumes:
+      - ./app:/app:rw
+    networks:
+      - ns3
+
+networks:
+  ns3:
+    driver: bridge
+
+volumes:
+  ns3:
+    driver: local
