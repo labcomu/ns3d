@@ -55,7 +55,8 @@ ENV PATH="/dist:$PATH" \
     NS3LOGDIR=/dist/log \
     NS3CONFIG="--enable-examples --enable-tests" \
     NS3DEBUG="--build-profile=debug --out=build/debug" \
-    NS3OPT="--build-profile=optimized --out=build/optimized"
+    NS3OPT="--build-profile=optimized --out=build/optimized" \
+    CCACHE_DIR=/tmp
 
 COPY ns3-get.sh /tmp/
 RUN bash /tmp/ns3-get.sh
