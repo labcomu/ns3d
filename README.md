@@ -8,3 +8,8 @@ Just type `make`. It is going to create a shared folder `app` where development 
 
 1. Make
 1. Docker Engine and Docker Compose
+
+
+## References
+
+* [NS-3 | Github](https://github.com/nsnam)

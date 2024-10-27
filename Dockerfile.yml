@@ -49,7 +49,7 @@ USER 1001
 
 WORKDIR /dist/
 
-ENV PATH="/dist:$PATH" \
+ENV PATH="/dist:/dist/ns3:$PATH" \
     DISTDIR=/dist \
     NS3DIR=/dist/ns3 \
     NS3LOGDIR=/dist/log \
