@@ -1,16 +1,5 @@
 #!/bin/bash
 
-# symlink ns3 dir to "ns-3"
-nsdir="$DISTDIR"/$(<.config hxselect -c "ns-3::attr(dir)")
-echo "creating symbolic link to $nsdir ..."
-ln -sf "${nsdir}" ns3
-
-# create necessary dir tree
-mkdir -p "${nsdir}/build/debug/scratch" && \
-mkdir -p "${nsdir}/build/optimized/scratch" && \
-mkdir -p "${nsdir}/build/log" && \
-[ $(ln -A "${nsdir}/scratch/*") ] && rm -r "${nsdir}/scratch/*"
-
 # if not already built
 if [ ! $(find . -maxdepth 2 -type f -name 'NetAnim') ]; then
     # build netanim
@@ -29,5 +18,3 @@ fi
 # ./configure --disable-linuxmodule --enable-nsclick --enable-wifi && \
 # make && cd doc && make install-man && make install && \
 # cd "${DISTDIR}"
-
-# chown -R 1001:1001 .
