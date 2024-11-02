@@ -4,12 +4,11 @@ services:
     image: ns3
     container_name: ns3
     hostname: ns3
-    restart: unless-stopped
     tty: true
     build:
       dockerfile: Dockerfile.yml
     volumes:
-      - ./app:/app:rw
+      - ./share:/share:rw
     networks:
       - ns3
 
