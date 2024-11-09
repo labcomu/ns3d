@@ -52,9 +52,9 @@ refresh: stop build start
 
 # ------------------------------------------------------------------------------
 
-.PHONY: shell-ns3
-shell-ns3:
-	@echo '>> shell-ns3'
+.PHONY: it
+it:
+	@echo '>> it'
 	docker exec -it ns3 /bin/bash
 
 # ------------------------------------------------------------------------------
@@ -62,5 +62,5 @@ shell-ns3:
 .PHONY: ns3
 ns3: file = docker-compose.yml
 ns3: services = ns3
-ns3: refresh shell-ns3
+ns3: refresh it
 	@echo '>> ns3'

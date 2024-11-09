@@ -4,6 +4,7 @@ services:
     image: ns3
     container_name: ns3
     hostname: ns3
+    user: ubuntu:ubuntu
     tty: true
     build:
       dockerfile: Dockerfile.yml

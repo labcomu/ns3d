@@ -1,6 +1,8 @@
 FROM ubuntu:noble
 
-ARG DEBIAN_FRONTEND=noninteractive
+# ------------------------------------------------------------------------------
+
+ARG DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update; \
     apt upgrade --assume-yes --new-pkgs; \
@@ -13,6 +15,7 @@ RUN apt-get install --assume-yes \
     cmake \
     curl \
     g++ \
+    git \
     html-xml-utils \
     nano \
     python3 \
@@ -29,33 +32,25 @@ RUN pip3 install --upgrade --break-system-packages \
     cppyy \
     ;
 
-RUN mkdir -p /app/; \
-    chown -R 1001:1001 /app/
+# ------------------------------------------------------------------------------
 
-ENV PATH="/dist:/dist/ns3:$PATH" \
-    CCACHE_DIR=/tmp \
-    DISTDIR=/dist \
-    NS3DIR=/dist/ns3 \
-    NS3LOGDIR=/dist/log \
-    NS3CONFIG="--enable-examples --enable-tests" \
-    NS3DEBUG="--build-profile=debug --out=build/debug" \
-    NS3OPT="--build-profile=optimized --out=build/optimized"
+WORKDIR /home/ubuntu
 
-USER 1000
+# ------------------------------------------------------------------------------
 
-WORKDIR /dist/
+RUN ln --symbolic /share .
+
+# ------------------------------------------------------------------------------
+
+RUN git clone https://github.com/labcomu/NS3_EDC.git; \
+    cd NS3_EDC; \
+    git checkout master;
+
+# ------------------------------------------------------------------------------
+
+RUN cd NS3_EDC; \
+    ./ns3 configure --enable-examples --enable-tests --build-profile=debug --out=build/debug; \
+    ./ns3 build
+
+# ------------------------------------------------------------------------------
     
-COPY ns3-get.sh /tmp/
-RUN bash /tmp/ns3-get.sh
-
-COPY ns3-build.sh /tmp/
-RUN bash /tmp/ns3-build.sh
-
-COPY ns3-addon.sh /tmp/
-RUN bash /tmp/ns3-addon.sh
-
-COPY res/ns3/ /dist/ns3/
-
-RUN echo 
-
-WORKDIR /dist/ns3/
