@@ -1,6 +1,10 @@
 # ns3d 
 
-Docker setup for [NS-3](https://www.nsnam.org/) development inspired on [ns3-box](https://github.com/adeelahmadk/ns3-box)
+Docker setup for [NS-3](https://www.nsnam.org/) development.
+
+Based on the [NS3_EDC](https://github.com/labcomu/NS3_EDC) repository.
+
+Current NS-3 version: 3.42.
 
 ## Required packages
 
@@ -28,7 +32,7 @@ Docker setup for [NS-3](https://www.nsnam.org/) development inspired on [ns3-box
 
 You are ready to develop and run NS-3 inside a Docker container.
 
-Current NS-3 version: 3.42
+Current 
 
 
 ## References
