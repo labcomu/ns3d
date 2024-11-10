@@ -29,6 +29,8 @@ Current NS-3 version: 3.42.
 }
 ```
 1. Open on Visual Studio Code: _Dev Containers: Attach to Running Container..._ > _/ns3_
+1. Optional: setup GIT user to commit changes.
+
 
 You are ready to develop and run NS-3 inside a Docker container.
 

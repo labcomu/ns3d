@@ -1,7 +1,5 @@
 **/.vscode
 *.[oa]
 *.bak
-build/
-dist/
-scrap/
-app/
+
+share/

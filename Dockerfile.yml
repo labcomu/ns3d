@@ -34,6 +34,8 @@ RUN pip3 install --upgrade --break-system-packages \
 
 # ------------------------------------------------------------------------------
 
+USER ubuntu
+
 WORKDIR /home/ubuntu
 
 # ------------------------------------------------------------------------------
@@ -42,13 +44,11 @@ RUN ln --symbolic /share .
 
 # ------------------------------------------------------------------------------
 
-RUN git clone https://github.com/labcomu/NS3_EDC.git; \
-    cd NS3_EDC; \
-    git checkout master;
+RUN git clone https://gitlab.com/labcomu1/ns-3-dev.git;
 
 # ------------------------------------------------------------------------------
 
-RUN cd NS3_EDC; \
+RUN cd ns-3-dev; \
     ./ns3 configure --enable-examples --enable-tests --build-profile=debug --out=build/debug; \
     ./ns3 build
 
