@@ -41,9 +41,6 @@ Current NS-3 version: 3.43.
 
 You are ready to develop and run NS-3 inside a Docker container.
 
-Current 
-
-
 ## References
 
 * [ns-3-dev | labcomu | Gitlab](https://gitlab.com/labcomu1/ns-3-dev)
