@@ -2,9 +2,9 @@
 
 Docker setup for [NS-3](https://www.nsnam.org/) development.
 
-Based on the [NS3_EDC](https://github.com/labcomu/NS3_EDC) repository.
+Based on the [ns-3-dev | labcomu | Gitlab](https://gitlab.com/labcomu1/ns-3-dev) repository.
 
-Current NS-3 version: 3.42.
+Current NS-3 version: 3.43.
 
 ## Required packages
 
@@ -24,8 +24,15 @@ Current NS-3 version: 3.42.
 1. Paste the following content:
 ```json
 {
-	"workspaceFolder": "/home/ubuntu",
-	"remoteUser": "ubuntu"
+	"workspaceFolder": "/home/ubuntu/ns-3-dev",
+	"remoteUser": "ubuntu",
+	"extensions": [
+		"ms-vscode.cmake-tools",
+		"ms-vscode.cpptools",
+		"ms-vscode.cpptools-extension-pack",
+		"ms-vscode.cpptools-themes",
+		"twxs.cmake"
+	]
 }
 ```
 1. Open on Visual Studio Code: _Dev Containers: Attach to Running Container..._ > _/ns3_
@@ -39,7 +46,7 @@ Current
 
 ## References
 
-* [NS3_EDC](https://github.com/labcomu/NS3_EDC)
+* [ns-3-dev | labcomu | Gitlab](https://gitlab.com/labcomu1/ns-3-dev)
 * [NS-3](https://github.com/nsnam)
 * [ns3-box](https://github.com/adeelahmadk/ns3-box)
 
