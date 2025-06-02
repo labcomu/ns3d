@@ -34,7 +34,7 @@ log:
 .PHONY: build
 build:
 	@echo '>> build'
-	docker compose --file ${file} build ${services}
+	COMPOSE_BAKE=true docker compose --file ${file} build ${services}
 
 .PHONY: stop
 stop:

@@ -8,6 +8,8 @@ services:
     tty: true
     build:
       dockerfile: Dockerfile.yml
+      additional_contexts:
+        - ssh=~/.ssh
     volumes:
       - ./share:/share:rw
     networks:

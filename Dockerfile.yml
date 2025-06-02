@@ -40,11 +40,31 @@ WORKDIR /home/ubuntu
 
 # ------------------------------------------------------------------------------
 
-RUN ln --symbolic /share .
+COPY --chown=ubuntu:ubuntu --from=ssh ./ ./.ssh/
 
 # ------------------------------------------------------------------------------
 
-RUN git clone https://gitlab.com/labcomu1/ns-3-dev.git;
+# ARG NS3_REPO_URL "git@gitlab.com:nsnam/ns-3-dev.git"
+# ARG NS3_REPO_URL "git@gitlab.com:labcomu1/ns-3-dev.git"
+ARG NS3_REPO_URL="ssh://git@projetos.imd.ufrn.br:4422/labcomu/ns-3-dev.git"
+
+RUN git clone ${NS3_REPO_URL};
+
+# ------------------------------------------------------------------------------
+
+RUN cd ns-3-dev; \
+    ./ns3 configure --enable-examples --enable-tests --build-profile=debug --out=build/debug; \
+    ./ns3 build
+
+
+# ------------------------------------------------------------------------------
+
+# ARG NS3_REPO_BRANCH="master"
+ARG NS3_REPO_BRANCH="feature/ftgo-test"
+
+RUN cd ns-3-dev; \
+    git pull --all; \
+    git checkout ${NS3_REPO_BRANCH};
 
 # ------------------------------------------------------------------------------
 
@@ -53,4 +73,7 @@ RUN cd ns-3-dev; \
     ./ns3 build
 
 # ------------------------------------------------------------------------------
-    
+
+RUN ln --symbolic /share .
+
+# ------------------------------------------------------------------------------
